@@ -1,24 +1,40 @@
-# README
+###仕様把握をよりしやすくしよう
+##why
+・システムとして機能が追加されていくことで、コード全体が複雑化していくことが考えられる
+→仕様に詳しいメンバーがその機能の実装者中心に
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+・仕様がまとまっている箇所があれば、全メンバーが仕様を素早くキャッチアップできる
+┗既存メンバー、新規参画メンバー
 
-Things you may want to cover:
+##現状
+・ドキュメント化されている箇所とまだこれからの箇所が存在する
+┗why ドキュメント化と実装が別タスク→ドキュメント化の工数確保が難しい
+→ドキュメント化と実装を両立可能な方法をとろう！
+→テストコード実装&コメントの付与
+テストコード
+┗単体テスト
+┗システムテスト
+ ┗why
+ ・共通認識が図りやすい - 既にリリースされ稼働して1年以上経過 -> UIの大幅変更が起こりにくく、作り直しが生じにくい
+ ・リファクタリングの基盤となる - モデルやモジュールのリファクタリングを安全にする
 
-* Ruby version
+★★★仕様を把握しやすい、とは
+・画面遷移のイメージができる
+・状態遷移のイメージができる(シーケンス図がある)
+・画面遷移, 状態遷移がコード上のどの部分で実現されているかを把握しやすい
 
-* System dependencies
+システムテスト候補
+・request spec
+┗APIサーバーとして使う場合のみrequest specを書く
+・system spec
+┗主要機能にJSを使用している箇所があれば、system specを利用する恩恵を授かれる。
+┗テスト失敗時にスクリーンショットを撮れる
+┗テストが終わるとデータベースの変更が自動でロールバック
 
-* Configuration
+【参考】
+https://zenn.dev/ysi831/books/66ba06d6a4a1d4/viewer/5c8d80
+https://qiita.com/d0ne1s/items/ee906e83da355e699e7d
+https://techracho.bpsinc.jp/hachi8833/2018_01_25/51101
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+■フォーマット
+・rubocopをエディタ上でチェック・実行可能に
