@@ -8,11 +8,17 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
 
   def create
     @user = User.new(email: params[:email])
-    @user.save
-    redirect_to("/users/#{@user.id}")
+
+    if @user.valid?
+      @user.save
+      redirect_to("/users/#{@user.id}")
+    else
+      render action: :new
+    end
   end
 end
