@@ -1,0 +1,5 @@
+<%= form_with url: users_path do |form| %>
+  <%= form.label :email %> <%= form.text_field :email, data: { test: 'user_email' } %>
+  <%= errors(@user, :email) %>
+  <%= form.submit data: { test: 'submit' } %>
+<% end %>
